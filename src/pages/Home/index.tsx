@@ -1,3 +1,5 @@
+import { ResumeContainer } from './style'
+
 export function Home() {
-  return <p>Hello Word</p>
+  return <ResumeContainer></ResumeContainer>
 }
