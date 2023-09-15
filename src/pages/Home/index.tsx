@@ -1,5 +1,5 @@
-import { ResumeContainer } from './style'
+import { Resume } from './components/Resume'
 
 export function Home() {
-  return <ResumeContainer></ResumeContainer>
+  return <Resume />
 }
