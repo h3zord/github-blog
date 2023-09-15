@@ -1,5 +1,11 @@
 import { Resume } from './components/Resume'
+import { SearchBar } from './components/SearchBar'
 
 export function Home() {
-  return <Resume />
+  return (
+    <>
+      <Resume />
+      <SearchBar />
+    </>
+  )
 }

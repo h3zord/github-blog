@@ -34,15 +34,17 @@ export const ResumeContainer = styled.section`
 
   .name-and-github a {
     font-size: 0.75rem;
+    height: 19px;
     font-weight: 700;
     display: flex;
     gap: 0.5rem;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
     color: ${(props) => props.theme.blue};
   }
 
   .name-and-github a:hover {
-    text-decoration: underline;
+    border-bottom: 1.5px solid ${(props) => props.theme.blue};
   }
 
   .name-and-github a img {
