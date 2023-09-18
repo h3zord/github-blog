@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SearchBarContainer = styled.section`
   width: 54rem;
   line-height: 1.6;
-  margin: 8rem auto;
+  margin: 8rem auto 0 auto;
 
   .publication {
     display: flex;
