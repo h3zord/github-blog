@@ -54,7 +54,7 @@ export const ResumeContainer = styled.section`
   }
 
   .resume-information p {
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     line-height: 1.6;
     color: ${(props) => props.theme['base-text']};
   }
@@ -63,7 +63,7 @@ export const ResumeContainer = styled.section`
     display: inline-grid;
     grid-template-columns: auto auto auto;
     gap: 2rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     line-height: 1.6;
     color: ${(props) => props.theme['base-subtitle']};
   }
