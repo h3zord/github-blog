@@ -14,23 +14,6 @@ export const PostInfoContainer = styled.div`
     justify-content: space-between;
   }
 
-  .back-and-github-buttons button {
-    display: flex;
-    gap: 0.5rem;
-    border: none;
-    background-color: transparent;
-    align-items: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-bottom: 1.5px solid transparent;
-    cursor: pointer;
-    color: ${(props) => props.theme.blue};
-  }
-
-  .back-and-github-buttons button:hover {
-    border-bottom: 1.5px solid ${(props) => props.theme.blue};
-  }
-
   .back-and-github-buttons a {
     font-size: 0.75rem;
     height: 19px;

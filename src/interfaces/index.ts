@@ -13,7 +13,7 @@ export interface IPostList {
   items: {
     title: string
     body: string
-    update_at: Date
+    updated_at: string
     number: number
   }[]
 }

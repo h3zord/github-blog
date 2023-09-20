@@ -7,6 +7,10 @@ export const PostsContainer = styled.main`
   row-gap: 2rem;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export const PostContent = styled.article`
@@ -21,7 +25,6 @@ export const PostContent = styled.article`
 
   &:hover {
     border: 2px solid ${(props) => props.theme['base-label']};
-    cursor: pointer;
   }
 
   & > div {
@@ -33,7 +36,7 @@ export const PostContent = styled.article`
 
   h3 {
     font-size: 1.25rem;
-    width: 17.6875rem;
+    width: 17rem;
     color: ${(props) => props.theme['base-title']};
   }
 

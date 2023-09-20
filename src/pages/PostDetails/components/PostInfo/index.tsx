@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { PostInfoContainer } from './style'
 import arrowUp from '../../../../assets/arrow-up.svg'
 import arrowBack from '../../../../assets/arrow-back.svg'
@@ -9,10 +10,10 @@ export function PostInfo() {
   return (
     <PostInfoContainer>
       <div className="back-and-github-buttons">
-        <button>
+        <Link to="/">
           <img src={arrowBack} alt="" />
           VOLTAR
-        </button>
+        </Link>
         <a
           href="https://github.com/h3zord"
           target="_blank"
