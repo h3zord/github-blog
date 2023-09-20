@@ -9,6 +9,8 @@ import { FormProvider, useForm } from 'react-hook-form'
 export function Home() {
   const [fetchPostList, setFetchPostList] = useState({} as IPostList)
 
+  const isLoading = Object.keys(fetchPostList).length
+
   const methods = useForm<IUseFormInputs>({
     defaultValues: {
       search_input: '',
@@ -38,12 +40,14 @@ export function Home() {
   }, [searchInput])
 
   return (
-    <>
-      <Resume />
-      <FormProvider {...methods}>
-        <SearchBar fetchPostList={fetchPostList} />
-        <Posts fetchPostList={fetchPostList} />
-      </FormProvider>
-    </>
+    isLoading && (
+      <>
+        <Resume />
+        <FormProvider {...methods}>
+          <SearchBar fetchPostList={fetchPostList} />
+          <Posts fetchPostList={fetchPostList} />
+        </FormProvider>
+      </>
+    )
   )
 }

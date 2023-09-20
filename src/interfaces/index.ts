@@ -18,12 +18,27 @@ export interface IPostList {
   }[]
 }
 
+export interface IPostContent {
+  title: string
+  updated_at: string
+  comments: number
+  html_url: string
+  body: string
+  user: {
+    login: string
+  }
+}
+
 export interface ISearchBarProps {
   fetchPostList: IPostList
 }
 
 export interface IPostsProps {
   fetchPostList: IPostList
+}
+
+export interface IPostDetailsProps {
+  fetchPostContent: IPostContent
 }
 
 export interface IUseFormInputs {

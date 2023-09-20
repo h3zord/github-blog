@@ -9,19 +9,19 @@ import { IGithubInfo } from '../../../../interfaces'
 export function Resume() {
   const [fetchGithubInfo, setFetchGithubInfo] = useState({} as IGithubInfo)
 
-  const getGithubInfo = async () => {
-    try {
-      const data = await fetch('https://api.github.com/users/h3zord').then(
-        (response) => response.json(),
-      )
-
-      setFetchGithubInfo(data)
-    } catch (error) {
-      return console.error(error)
-    }
-  }
-
   useEffect(() => {
+    const getGithubInfo = async () => {
+      try {
+        const data = await fetch('https://api.github.com/users/h3zord').then(
+          (response) => response.json(),
+        )
+
+        setFetchGithubInfo(data)
+      } catch (error) {
+        return console.error(error)
+      }
+    }
+
     getGithubInfo()
   }, [])
 
