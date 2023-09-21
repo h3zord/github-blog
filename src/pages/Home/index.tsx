@@ -21,22 +21,22 @@ export function Home() {
 
   const searchInput = watch('search_input')
 
-  const getPostList = async (query = '') => {
-    try {
-      const { data } = await api.get('', {
-        params: {
-          q: `${query} repo:h3zord/github-blog`,
-        },
-      })
-
-      setFetchPostList(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   useEffect(() => {
-    setTimeout(() => getPostList(searchInput), 2000)
+    const getPostList = async (query = '') => {
+      try {
+        const { data } = await api.get('', {
+          params: {
+            q: `${query} repo:h3zord/github-blog`,
+          },
+        })
+
+        setFetchPostList(data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    getPostList(searchInput)
   }, [searchInput])
 
   return (
