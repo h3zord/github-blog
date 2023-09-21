@@ -36,7 +36,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    getPostList(searchInput)
+    setTimeout(() => getPostList(searchInput), 2000)
   }, [searchInput])
 
   return (
