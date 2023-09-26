@@ -52,7 +52,7 @@ export function Home() {
 
           console.error(error)
         }
-      }, 1200)
+      }, 1000)
     }
 
     getPostList(searchInput)
