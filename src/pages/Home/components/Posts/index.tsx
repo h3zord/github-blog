@@ -7,7 +7,7 @@ import { ptBR } from 'date-fns/locale'
 export function Posts({ fetchPostList }: IPostsProps) {
   return (
     <PostsContainer>
-      {fetchPostList.items.map((post) => (
+      {fetchPostList.items?.map((post) => (
         <Link to={`${post.number}`} key={post.number}>
           <PostContent>
             <div>

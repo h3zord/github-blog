@@ -5,13 +5,14 @@ import { SearchBar } from './components/SearchBar'
 import { IPostList, IUseFormInputs } from '../../interfaces'
 import { api } from '../../lib/axios'
 import { FormProvider, useForm } from 'react-hook-form'
+import { Loader } from '../../components/Loading'
+import { CanceledError } from 'axios'
 
 export function Home() {
   const [fetchPostList, setFetchPostList] = useState({} as IPostList)
+  const [isLoading, setIsLoading] = useState(true)
 
   const abortControllerRef = useRef(new AbortController())
-
-  const isLoading = Object.keys(fetchPostList).length
 
   const methods = useForm<IUseFormInputs>({
     defaultValues: {
@@ -25,36 +26,45 @@ export function Home() {
 
   useEffect(() => {
     const getPostList = async (query = '') => {
-      try {
-        abortControllerRef.current.abort()
-        const newAbortController = new AbortController()
-        abortControllerRef.current = newAbortController
+      setIsLoading(true)
 
-        const { data } = await api.get('', {
-          params: {
-            q: `${query} repo:h3zord/github-blog`,
-          },
-          signal: newAbortController.signal,
-        })
+      abortControllerRef.current.abort()
+      const newAbortController = new AbortController()
+      abortControllerRef.current = newAbortController
 
-        setFetchPostList(data)
-      } catch (error) {
-        console.error(error)
-      }
+      setTimeout(async () => {
+        try {
+          const { data } = await api.get('', {
+            params: {
+              q: `${query} repo:h3zord/github-blog`,
+            },
+            signal: newAbortController.signal,
+          })
+
+          setFetchPostList(data)
+          setIsLoading(false)
+        } catch (error) {
+          setIsLoading(false)
+
+          if (error instanceof CanceledError) {
+            return
+          }
+
+          console.error(error)
+        }
+      }, 1200)
     }
 
     getPostList(searchInput)
   }, [searchInput])
 
   return (
-    isLoading && (
-      <>
-        <Resume />
-        <FormProvider {...methods}>
-          <SearchBar fetchPostList={fetchPostList} />
-          <Posts fetchPostList={fetchPostList} />
-        </FormProvider>
-      </>
-    )
+    <>
+      <Resume />
+      <FormProvider {...methods}>
+        <SearchBar fetchPostList={fetchPostList} />
+        {isLoading ? <Loader /> : <Posts fetchPostList={fetchPostList} />}
+      </FormProvider>
+    </>
   )
 }
